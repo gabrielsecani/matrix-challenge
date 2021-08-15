@@ -1,0 +1,17 @@
+{
+  "name": "matrix-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js input.csv",
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "Gabriel Lucas",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parse": "^4.16.0",
+    "fast-csv": "^4.3.6"
+  }
+}
