@@ -13,8 +13,6 @@ if (!fs.existsSync(filePath)) {
     console.log("File passed does not exists")
     return
 }
-//console.log('[3,1,4,2] and was ' + transform.rotate([1, 2, 3, 4]));
-//console.log('[4,1,2,7,5,3,8,9,6] and was ' + transform.rotate([1, 2, 3, 4, 5, 6, 7, 8, 9]));
 
 function checkArrayValid(json) {
     if (Array.isArray(json) && json.length > 0) {
