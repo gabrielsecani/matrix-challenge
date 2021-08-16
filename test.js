@@ -2,8 +2,8 @@ const transform = require('./csv/transform')
 
 
 const tests = [
-    { input: [], shouldBe: [] },
-    { input: [5], shouldBe: [5] },
+    {input: [], shouldBe: []},
+    {input: [5], shouldBe: [5]},
     {
         input: [1, 2, 3, 4],
         shouldBe: [3, 1, 4, 2]
@@ -16,6 +16,23 @@ const tests = [
         input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
         shouldBe: [5, 1, 2, 3, 9, 10, 6, 4, 13, 11, 7, 8, 14, 15, 16, 12]
     },
+    {
+        input: [
+            1, 2, 3, 4, 5,
+            6, 7, 8, 9, 10,
+            11, 12, 13, 14, 15,
+            16, 17, 18, 19, 20,
+            21, 22, 23, 24, 25,
+
+        ],
+        shouldBe: [
+            6, 1, 2, 3, 4,
+            11, 12, 7, 8, 5,
+            16, 17, 13, 9, 10,
+            21, 18, 19, 14, 15,
+            22, 23, 24, 25, 20,
+        ]
+    }
 ]
 transform.DEBUG = true;
 tests.forEach(t => {
