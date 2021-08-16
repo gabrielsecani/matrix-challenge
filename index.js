@@ -1,5 +1,5 @@
 var fs = require('fs');
-const read = require('./csv/read-csv')
+const {ReadCSV} = require('./csv/read-csv')
 const {WriteCSV} = require('./csv/write-csv')
 const transform = require('./csv/transform')
 
@@ -26,6 +26,7 @@ function checkArrayValid(json) {
 try {
     // console.log("loading file " + filePath);
     (async () => {
+        const read = new ReadCSV();
         const data = await read.readFile(filePath, checkArrayValid);
         const out = new WriteCSV();
         data.forEach(d => {
