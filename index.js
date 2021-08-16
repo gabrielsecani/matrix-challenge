@@ -29,15 +29,14 @@ try {
         const read = new ReadCSV();
         const data = await read.readFile(filePath, checkArrayValid);
         const out = new WriteCSV();
-        data.forEach(d => {
+        data.map(d => {
             if (d.valid) {
                 d.json = transform.rotate(d.json);
             }
-            // stream to output
-            out.writeData(d);
-        });
+            return d;
+        })
+            .forEach(d => out.writeData(d));
         out.end();
-//        console.log('end', data);
     })();
 } catch (e) {
     console.error(e);
