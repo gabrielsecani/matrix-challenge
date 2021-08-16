@@ -56,10 +56,31 @@ const conditionsRulesLeftToRight = [
         (lc) => (lc)),
 ]
 
+function getInnerMatrix(vec, lastIndex) {
+    if (lastIndex >= 3) {
+        const lincols = [];
+        const innerVec = vec.filter((val, originalIndex) => {
+            let lincol = indexToLineColumn(originalIndex, lastIndex + 1);
+            lincol.originalIndex = originalIndex;
+            // neither first line or column and neither last line or column
+            const isInner = lincol.line > 0 && lincol.column > 0 && lincol.line < lastIndex && lincol.column < lastIndex;
+            if (isInner) {
+                lincols.push(lincol);
+            }
+            return isInner;
+        });
+        rotate(innerVec).forEach((val,i)=>{
+            vec[lincols[i].originalIndex]=val;
+        });
+    }
+    return vec;
+}
+
 function rotate(vec) {
     if (vec.length == 1) return vec;
     const matrixSize = Math.sqrt(vec.length);
     var lastIndex = matrixSize - 1;
+    vec = getInnerMatrix(vec, lastIndex);
     return vec.map((val, j) => {
         let lincol = indexToLineColumn(j, matrixSize);
         // DEBUG
