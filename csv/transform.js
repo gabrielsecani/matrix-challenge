@@ -1,3 +1,4 @@
+
 function lineColumnObj(line, column) {
     return {
         line: line, column: column
@@ -11,7 +12,7 @@ function indexToLineColumn(index, matrixSize) {
     )
 }
 
-function lineColumnToIndex({line, column}, matrixSize) {
+function lineColumnToIndex({ line, column }, matrixSize) {
     return (line * matrixSize) + column;
 }
 
@@ -69,8 +70,8 @@ function getInnerMatrix(vec, lastIndex) {
             }
             return isInner;
         });
-        rotate(innerVec).forEach((val,i)=>{
-            vec[lincols[i].originalIndex]=val;
+        rotate(innerVec).forEach((val, i) => {
+            vec[lincols[i].originalIndex] = val;
         });
     }
     return vec;
@@ -79,24 +80,15 @@ function getInnerMatrix(vec, lastIndex) {
 function rotate(vec) {
     if (vec.length == 1) return vec;
     const matrixSize = Math.sqrt(vec.length);
-    var lastIndex = matrixSize - 1;
+    const lastIndex = matrixSize - 1;
     vec = getInnerMatrix(vec, lastIndex);
     return vec.map((val, j) => {
         let lincol = indexToLineColumn(j, matrixSize);
-        // DEBUG
-        // console.log("index "+j+": "+lincol.line+","+lincol.column);
-        const rules = conditionsRulesLeftToRight
+        conditionsRulesLeftToRight
             .filter(c => c.condition(lincol, lastIndex))
-            .filter((a, i) => i == 0)
-            // DEBUG
-            // .map(c => {
-            //     console.log(lincol, {desc:c.description});
-            //     return c;
-            // });
+            .filter((c, i) => i == 0)
             .forEach(c => c.process(lincol));
         const newIdx = lineColumnToIndex(lincol, matrixSize);
-        // DEBUG
-        // console.log('new line x col. new idx', lincol, newIdx);
         if (newIdx >= vec.length || newIdx < 0) {
             console.log('something goes wrong with rules: ', lincol, newIdx, val, j);
             return vec[j];
