@@ -82,7 +82,7 @@ function rotate(vec) {
     const matrixSize = Math.sqrt(vec.length);
     const lastIndex = matrixSize - 1;
     vec = getInnerMatrix(vec, lastIndex);
-    return vec.map((val, j) => {
+    return vec.map((value, j) => {
         let lincol = indexToLineColumn(j, matrixSize);
         conditionsRulesLeftToRight
             .filter(c => c.condition(lincol, lastIndex))
@@ -90,7 +90,7 @@ function rotate(vec) {
             .forEach(c => c.process(lincol));
         const newIdx = lineColumnToIndex(lincol, matrixSize);
         if (newIdx >= vec.length || newIdx < 0) {
-            console.log('something goes wrong with rules: ', lincol, newIdx, val, j);
+            console.log('something goes wrong with rules: ', lincol, newIdx, value, j);
             return vec[j];
         }
         return vec[newIdx];

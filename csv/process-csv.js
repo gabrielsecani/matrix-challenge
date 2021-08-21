@@ -4,7 +4,7 @@ class ProcessCSV {
 
     process(rowArray) {
         const obj = this.buildObjectFromJson(rowArray);
-        if (obj.valid) {
+        if (obj.is_valid) {
             // do the job: rotate
             obj.json = rotate(obj.json);
             // set output json as string
@@ -14,15 +14,15 @@ class ProcessCSV {
     }
 
     buildObjectFromJson(rowArray) {
-        const obj = { id: rowArray[0], json: [], valid: false };
+        const obj = { id: rowArray[0], json: [], is_valid: false };
         try {
             if (rowArray[1] && typeof rowArray[1] === 'string') {
                 obj.json = JSON.parse(rowArray[1].trim());
             }
-            obj.valid = this.checkValid(obj.json);
-            if (!obj.valid) obj.json = [];
+            obj.is_valid = this.checkValid(obj.json);
+            if (!obj.is_valid) obj.json = [];
         } catch (e) {
-            obj.valid = false;
+            obj.is_valid = false;
         }
         return obj;
     }

@@ -1,7 +1,6 @@
 const fs = require('fs');
 const parse = require('csv-parse');
 const { WriteCSV } = require('./csv/write-csv');
-
 const { ProcessCSV } = require('./csv/process-csv');
 const { exit } = require('process');
 

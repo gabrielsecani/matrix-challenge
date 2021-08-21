@@ -7,8 +7,8 @@ class WriteCSV {
     constructor(toStream) {
         this.csvStream = format({ headers: true, rowDelimiter: '\n' });
         if (toStream) {
-            this.outputStream = toStream;
-        }else{
+            this.csvStream.pipe(toStream);
+        } else {
             this.csvStream.pipe(process.stdout);
         }
     }
