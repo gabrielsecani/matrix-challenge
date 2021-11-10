@@ -1,0 +1,27 @@
+<div>
+  <div class="container">
+    <h1>Entrada </h1>
+
+    <p>
+      <input class="" #entrada type="text" name="entrada" id="entrada" (input)="novo()">
+    </p>
+
+    <button class="btn-Rotacionar" (click)="denovo()">denovo</button>
+    <h2>Saída</h2>
+
+    <table class="table1">
+      <caption>matriz não rotacionada</caption>
+      <tr *ngFor="let elem of matrizOriginal">
+        <td *ngFor="let kv of elem | keyvalue">{{ kv.value }}</td>
+      </tr>
+    </table>
+
+    <table class="table1">
+      <caption>matriz rotacionada</caption>
+      <tr *ngFor="let elem of rotation.getMatriz()">
+        <td *ngFor="let kv of elem | keyvalue">{{ kv.value }}</td>
+      </tr>
+    </table>
+  </div>
+
+</div>

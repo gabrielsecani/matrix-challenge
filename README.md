@@ -1,66 +1,79 @@
-# Matrix Challange
+# OriginalCubeRotation
 
-Rotate a given matrix from left to right.
+* O programa roda?
+Sim.
 
-### Theory
+* A entrada e saída de dados é 
+conforme o esperado?
+Sim.
 
-You work with a list of numbers that represent a table your program has to
-interpret correctly. Since there is nothing but a flat list, the program has to
-infer the rows and columns from this data, if needed.
+* Está formatado adequadamente?
+Na medida do possível, planejei fazer algo simples em uma única página, sem direcionamentos.
 
-If the square edge length is odd and there is a singular field in the middle of
-the table, it is not moved.
+* O programa resolve todos os 
+casos, incluindo diferentes 
+números de linhas e colunas, 
+tabelas grandes e pequenas e 
+casos de erro?
+Sim, dentro das especificações do projeto.
 
-![image](https://user-images.githubusercontent.com/6935612/129495921-69ab8fc3-a2b0-45fd-9027-5be84fc52f84.png)
+* Para os casos tratados, estão 
+sendo tratados corretamente?
+Sim, todos os cados passados e vários outros que inserí.
+
+* Como você sabe disso?
+Fiz testes manualmente e automatizados.
+
+* Você fez testes usando algum 
+exemplo de dados? Se sim, por 
+favor inclua isso no seu código.
+Todos os exemplos foram testados.
+
+* Você escreveu teste unitário?
+Sim, os 6 testes descritos no documento. 
+
+* Conte-nos sobre isso no README. 
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.2.
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+Casos de teste:
+Entrada:
+1, 2, 3, 4, 5, 6, 7, 8, 9
+4, 2, 9, 1
+-9
+2, 3
+3, -5, -2
+1, 1, 1, 1, 1
+
+Saída:
+4, 1, 2, 7, 5, 3, 8, 9, 6 - Válido
+9, 4, 1, 2 - Válido
+-9 - Válido
+2, 3 - Inválido
+3, -5, -2 - Inválido
+1, 1, 1, 1, 1 - Inválido
 
 
-### Input
-The input will be a CSV file with the columns id and json. You can assume id
-to be a string and json to be a string (JSON encoded data).
-```json
-id,json
-1,"[1, 2, 3, 4, 5, 6, 7, 8, 9]"
-2,"[40, 20, 90, 10]"
-3,"[-5]"
-9,"[2, -0]"
-5,"[2, -5, -5]"
-8,"[1, 1, 1, 1, 1]”
-```
+## Running end-to-end tests
 
-### Output
-The output should be a CSV-encoded series of rotated tables with the
-columns id, json and is_valid. The latter is an indicator of whether or not
-a given table is valid, if it is not, json should be an empty array.
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-```json
-id,json,is_valid
-1,"[4, 1, 2, 7, 5, 3, 8, 9, 6]",true
-2,"[90, 40, 10, 20]",true
-3,"[-5]",true
-9,"[]",false
-5,"[]",false
-8,"[]",false
-```
+## Further help
 
-## Running
-### First install 
-```shell
-npm install
-```
-
-## Running tests
-
-This will run some unit test to rotate routine
-```shell
-npm test
-```
-
-## Running
-This will run a default option write node output to stdout.
-```shell
-npm start
-```
-or this to redirect stdout to a file
-```shell
-node index.js input.csv > output.csv
-```
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
